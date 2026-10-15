@@ -1,12 +1,21 @@
 package org.vishal.expensetracker;
 
+import jakarta.persistence.*;
+
 import java.math.BigDecimal;
 import java.time.LocalDate;
+
+@Entity
+@Table(name = "expenses")
 public class Expense {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(nullable = false, precision = 10, scale = 2)
     private BigDecimal amount;
     private String description;
+    @Column(nullable = false)
     private LocalDate date;
     private String category;
 
